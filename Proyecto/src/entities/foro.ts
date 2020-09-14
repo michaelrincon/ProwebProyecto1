@@ -1,5 +1,5 @@
 import { Tema } from './tema';
 
 export class Foro {
-    temas: Tema [];
+    constructor(public temas: Tema[]){}
 }
