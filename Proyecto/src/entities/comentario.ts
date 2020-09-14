@@ -1,5 +1,5 @@
 export class Comentario {
-    fecha : String;
-    contenido : String;
-    respuestas : Comentario [];
+    fecha: string;
+    contenido: string;
+    respuestas: Comentario [];
 }
