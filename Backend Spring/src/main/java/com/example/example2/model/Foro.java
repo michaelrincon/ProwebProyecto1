@@ -16,6 +16,8 @@ public class Foro {
     @GeneratedValue
     private Long id;
 
+    private Boolean moderado;
+
     @OneToMany(mappedBy = "temaForo")
     @JsonIgnore // https://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion
     private List<Tema> temas;
@@ -30,8 +32,15 @@ public class Foro {
         this.id = id;
     }
 
+    public boolean getModerado(){
+        return moderado;
+    }
 
- 
+    public void setModerado(boolean moderado){
+        this.moderado = moderado;
+    }
+
+
     public List<Tema> getTemas() {
         return temas;
     }

@@ -20,7 +20,7 @@ public class Tema {
     private String fechaPublicacion;
     private String titulo;
     private String contenido;
-    private Int rating;
+    private int rating;
 
     @ManyToOne
     private Foro temaForo;
@@ -53,22 +53,49 @@ public class Tema {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public String getFechaPublicacion() {
-        return fechaPublicacion;
+    public String getTitulo() {
+        return titulo;
     }
 
 
-    public void setFechaPublicacion(String fechaPublicacion) {
-        this.fechaPublicacion = fechaPublicacion;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getContenido() {
+        return contenido;
     }
 
 
-    public List<Employee> getEmployees() {
-        return employees;
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public int getRating() {
+        return rating;
     }
 
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+    public void setRating(int rating) {
+        this.rating = rating;
     }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public Foro getTemaForo() {
+        return temaForo;
+    }
+
+
+    public void setTemaForo(Foro temaForo) {
+        this.temaForo = temaForo;
+    }
+    
 }

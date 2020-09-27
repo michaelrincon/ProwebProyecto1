@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,12 +17,20 @@ public class Comentario {
     @GeneratedValue
     private Long id;
 
-    private String name;
-
-    @OneToMany(mappedBy = "employer")
+    private String fecha;
+    private String contenido;
+    private int rating;
+/*
+    @OneToMany(mappedBy = "respuestasComentarios")
     @JsonIgnore // https://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion
-    private List<Employee> employees;
+    private List<Comentario> respuestas;
+*/
+    @ManyToOne
+    private Tema comentarioTema;
 
+/*    @ManyToOne
+    private Comentario respuestasComentario;
+*/
     /**
      * @return the id
      */
@@ -36,31 +45,51 @@ public class Comentario {
         this.id = id;
     }
 
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
+    
+    public String getFecha() {
+        return fecha;
     }
 
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
+    
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
-    /**
-     * @return the employees
-     */
-    public List<Employee> getEmployees() {
-        return employees;
+    public String getContenido() {
+        return contenido;
     }
 
-    /**
-     * @param employees the employees to set
-     */
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+    
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
+
+    public int getRating() {
+        return rating;
+    }
+
+    
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+/*
+    public List<Comentario> getRespuestas() {
+        return respuestas;
+    }
+
+
+    public void setRespuestas(List<Comentario> respuestas) {
+        this.respuestas = respuestas;
+    }
+*/
+    public Tema getComentarioTema() {
+        return comentarioTema;
+    }
+
+
+    public void setComentarioTema(Tema comentarioTema) {
+        this.comentarioTema = comentarioTema;
+    }
+
+
 }
