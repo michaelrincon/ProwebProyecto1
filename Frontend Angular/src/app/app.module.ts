@@ -40,10 +40,26 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { ForoListComponent } from './foro/foro-list/foro-list.component';
+import { ForoCreateComponent } from './foro/foro-create/foro-create.component';
+import { TemaListComponent } from './tema/tema-list/tema-list.component';
+import { TemaViewComponent } from './tema/tema-view/tema-view.component';
+import { TemaCreateComponent } from './tema/tema-create/tema-create.component';
+import { ComentarioListComponent } from './comentario/comentario-list/comentario-list.component';
+import { ComentarioCreateComponent } from './comentario/comentario-create/comentario-create.component';
+import { RespuestaCreateComponent } from './respuesta/respuesta-create/respuesta-create.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ForoListComponent,
+    ForoCreateComponent,
+    TemaListComponent,
+    TemaViewComponent,
+    TemaCreateComponent,
+    ComentarioListComponent,
+    ComentarioCreateComponent,
+    RespuestaCreateComponent
   ],
   imports: [
     BrowserModule,
