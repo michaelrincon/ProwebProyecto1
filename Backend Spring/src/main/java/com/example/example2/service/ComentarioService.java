@@ -3,6 +3,7 @@ package com.example.example2.service;
 import com.example.example2.exceptions.NotFoundException;
 import com.example.example2.model.Comentario;
 import com.example.example2.model.ComentarioRepository;
+import com.example.example2.model.Respuesta;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,13 +29,13 @@ public class ComentarioService {
     Iterable<Comentario> getComentarios() {
         return repository.findAll();
     }
-/*
+
     @GetMapping("/comentarios/{id}/respuestas")
-    public Iterable<Comentario> findAllRespuestas(@PathVariable("id") Long comentarioId) {
+    public Iterable<Respuesta> findAllRespuestas(@PathVariable("id") Long comentarioId) {
         // What happens if the company does not exist in the DB?
         return repository.findById(comentarioId).get().getRespuestas();
     }
-*/
+
     @GetMapping("/comentarios/{id}")
     Comentario findComentario(@PathVariable Long id) {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("Comentario no encontrado"));

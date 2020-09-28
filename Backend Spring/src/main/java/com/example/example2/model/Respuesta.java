@@ -1,17 +1,14 @@
 package com.example.example2.model;
 
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Comentario {
+public class Respuesta {
 
     @Id
     @GeneratedValue
@@ -22,29 +19,19 @@ public class Comentario {
     private int rating;
 
     @ManyToOne
-    private Tema comentarioTema;
-
-    @OneToMany(mappedBy = "respuestasComentarios")
-    @JsonIgnore // https://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion
-    private List<Respuesta> respuestas;
+    private Comentario respuestasComentarios;
 
 
 
-    /**
-     * @return the id
-     */
     public Long getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    
     public String getFecha() {
         return fecha;
     }
@@ -72,23 +59,12 @@ public class Comentario {
         this.rating = rating;
     }
 
-    public List<Respuesta> getRespuestas() {
-        return respuestas;
+    public Comentario getComentario() {
+        return respuestasComentarios;
     }
 
 
-    public void setRespuestas(List<Respuesta> respuestas) {
-        this.respuestas = respuestas;
+    public void setComentario(Comentario resComentario) {
+        this.respuestasComentarios = resComentario;
     }
-
-    public Tema getComentarioTema() {
-        return comentarioTema;
-    }
-
-
-    public void setComentarioTema(Tema comentarioTema) {
-        this.comentarioTema = comentarioTema;
-    }
-
-
 }
