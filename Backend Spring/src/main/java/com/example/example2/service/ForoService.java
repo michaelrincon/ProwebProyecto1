@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * ForoService
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/public")
 public class ForoService {
 
     @Autowired

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * ComentarioService
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/public")
 public class ComentarioService {
 
     @Autowired

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * RespuestaService
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/public")
 public class RespuestaService {
 
     @Autowired
