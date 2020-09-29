@@ -48,6 +48,7 @@ import { TemaCreateComponent } from './tema/tema-create/tema-create.component';
 import { ComentarioListComponent } from './comentario/comentario-list/comentario-list.component';
 import { ComentarioCreateComponent } from './comentario/comentario-create/comentario-create.component';
 import { RespuestaCreateComponent } from './respuesta/respuesta-create/respuesta-create.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { RespuestaCreateComponent } from './respuesta/respuesta-create/respuesta
     TemaCreateComponent,
     ComentarioListComponent,
     ComentarioCreateComponent,
-    RespuestaCreateComponent
+    RespuestaCreateComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
