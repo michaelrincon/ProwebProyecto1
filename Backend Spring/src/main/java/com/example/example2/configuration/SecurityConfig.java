@@ -38,9 +38,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-            .withUser("admin").password(encoder().encode("password")).roles("ADMIN")
+            .withUser("administrador").password(encoder().encode("proyecto")).roles("ADMIN")
             .and()
-            .withUser("user").password(encoder().encode("password")).roles("USER");
+            .withUser("usuario").password(encoder().encode("proyecto")).roles("USER")
+            .and()
+            .withUser("moderador").password(encoder().encode("proyecto")).roles("MODERA");
     }
 
     @Override
@@ -50,8 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .csrf().disable()
             // Uncomment this to enable H2 console
-             .headers().frameOptions().disable()
-             .and()
+            .headers().frameOptions().disable()
+            .and()
             .exceptionHandling()
             .authenticationEntryPoint(entryPoint)
             .and()
@@ -70,7 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessHandler(logoutSuccessHandler)
             .and()
             // Uncomment this to enable H2 console
-             .headers().frameOptions().disable()
+            .headers().frameOptions().disable()
             ;
     }
 
