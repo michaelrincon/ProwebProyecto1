@@ -1,1 +1,24 @@
-<p>comentario-list works!</p>
+<div>
+    <a [routerLink]="['/temas/',idForo,'comentarios',idTema,'create']">Crear comentario</a>
+    <table class="table table-light">
+      <thead class="thead-light">
+        <tr>
+          <th>Id</th>
+          <th>Contenido</th>
+          <th>Fecha</th>
+          <th>Rating</th>
+          <th>Respuestas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let comentario of comentarios">
+          <td>{{ comentario.id}}</td>
+          <td>{{ comentario.contenido }}</td>
+          <td>{{ comentario.fecha }}</td>
+          <td>{{ comentario.rating }}</td>
+          <td><a [routerLink]="['/temas', idForo,'comentarios',idTema,'respuestas',comentario.id]">Ver respuestas</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+

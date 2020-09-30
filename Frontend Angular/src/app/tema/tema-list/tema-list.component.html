@@ -18,7 +18,7 @@
           <td>{{ tema.contenido }}</td>
           <td>{{ tema.fechaPublicacion }}</td>
           <td>{{ tema.rating }}</td>
-          <td><a [routerLink]="['/temas', tema.id]">Ver Comentarios</a></td>
+          <td><a [routerLink]="['/temas', idForo,'comentarios',tema.id]">Ver Comentarios</a></td>
         </tr>
       </tbody>
     </table>

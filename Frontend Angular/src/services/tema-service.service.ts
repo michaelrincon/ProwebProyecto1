@@ -4,9 +4,8 @@ import { environment } from '../environments/environment';
 import { throwError, Observable, } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Tema } from 'src/entities/tema';
-import {
-  HttpHeaders
-} from "@angular/common/http";
+import { HttpHeaders } from "@angular/common/http";
+import { Comentario } from '../entities/comentario';
 
 @Injectable({
   providedIn: 'root'
@@ -73,6 +72,11 @@ export class TemaServiceService {
     return this.getTema<Tema[]>(url);
   }
 
+  findAllComentarios(id: number) {
+    const url = `${environment.baseUrl}/temas/${id}/comentarios`;
+    return this.getTema<Comentario[]>(url);
+  }
+
   update(tema: Tema) {
     const url = `${environment.baseUrl}/temas/${tema.id}`;
     return this.putTema(url, {
@@ -89,7 +93,7 @@ export class TemaServiceService {
       fechaPublicacion: tema.fechaPublicacion,
       contenido: tema.contenido,
       rating: tema.rating,
-      temaForo: tema.idForo
+      temaForo: tema.foroTema
     });
   }
 

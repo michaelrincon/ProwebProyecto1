@@ -22,13 +22,13 @@ export class TemaListComponent implements OnInit {
 
   ngOnInit(): void {
 
+    
     this.sub = this.route.params.subscribe(params => {
-      this.idForo = +params['id']; // Importante el '+' para obtener números
+      this.idForo = +params['idforo']; // Importante el '+' para obtener números
     });
     console.log(this.idForo+" id foro");
 
     this.findTemas();
-    
   }
 
   

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoginServicesService } from '../../../services/login-services.service';
 import { Tema } from '../../../entities/tema';
 import { TemaServiceService } from '../../../services/tema-service.service';
 import { ForoServiceService } from '../../../services/foro-service.service';
@@ -40,10 +39,9 @@ export class TemaCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
-      this.idForo = +params['id']; // Importante el '+' para obtener números
+      this.idForo = +params['idforo']; // Importante el '+' para obtener números
     });
     console.log(this.idForo+" id foro 2");
-    this.foroTema();
   }
 
   
@@ -51,7 +49,7 @@ export class TemaCreateComponent implements OnInit {
     this.foroService.findById(this.idForo).subscribe(
       result1 =>{
         this.foro = result1;
-        this.tema.idForo = this.foro;
+        this.tema.foroTema = this.foro;
         this.submitted = true;
         console.log(this.tema);
         this.temaService.create(this.tema).subscribe(
@@ -70,9 +68,6 @@ export class TemaCreateComponent implements OnInit {
     
   }
 
-  foroTema(){
-    
-  }
 
   cancel() {
     this.router.navigate(['/temas']);
