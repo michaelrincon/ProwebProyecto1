@@ -29,11 +29,5 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  logout() {
-    this.loginService.logout().subscribe(data => {
-      }, error => {
-        console.error(error);
-      });
-  }
 
 }

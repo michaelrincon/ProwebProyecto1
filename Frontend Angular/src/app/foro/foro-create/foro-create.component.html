@@ -1,1 +1,35 @@
-<p>foro-create works!</p>
+<div class="container">
+    <form (ngSubmit)="create()" #createForm="ngForm">
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input
+          id="name"
+          class="form-control"
+          type="text"
+          name="name"
+          required
+          [(ngModel)]="foro.nombre"
+          #txtName="ngModel"
+        />
+        <div
+          [hidden]="txtName.valid || !txtName.touched"
+          class="alert alert-danger"
+        >
+          Name is required
+        </div>
+      </div>
+  
+     
+  
+      <button type="submit" [disabled]="!canSubmit">
+        Crear foro
+      </button>
+      <button (click)="cancel()">Cancelar</button>
+    </form>
+  
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  </div>
+  <button (click)="logout()">logout</button>
+  

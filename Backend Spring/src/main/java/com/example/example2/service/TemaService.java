@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * TemaService
  */
 @RestController
-@RequestMapping("/public")
+@RequestMapping("/api")
 public class TemaService {
 
     @Autowired

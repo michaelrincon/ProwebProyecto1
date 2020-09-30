@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * ForoService
  */
 @RestController
-@RequestMapping("/public")
+@RequestMapping("/api")
 public class ForoService {
 
     @Autowired
@@ -51,6 +51,7 @@ public class ForoService {
 
         Foro foro = findForo(id);
         foro.setModerado(foroData.getModerado());
+        foro.setNombre(foroData.getNombre());
         //DEJAR ASI POR AHORA DESPUES VER SI SE COLOCAN MAS ATRIBUTOS AQUI
         // How to update the employer Company?
 
