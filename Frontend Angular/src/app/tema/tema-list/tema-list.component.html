@@ -1,1 +1,25 @@
-<p>tema-list works!</p>
+<div>
+    <a [routerLink]="['/temas/',idForo,'create']">Crear tema</a>
+    <table class="table table-light">
+      <thead class="thead-light">
+        <tr>
+          <th>Id</th>
+          <th>Titulo</th>
+          <th>Contenido</th>
+          <th>Fecha</th>
+          <th>Rating</th>
+          <th>Comentarios</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tema of temas">
+          <td>{{tema.id}}</td>
+          <td>{{ tema.titulo }}</td>
+          <td>{{ tema.contenido }}</td>
+          <td>{{ tema.fechaPublicacion }}</td>
+          <td>{{ tema.rating }}</td>
+          <td><a [routerLink]="['/temas', tema.id]">Ver Comentarios</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

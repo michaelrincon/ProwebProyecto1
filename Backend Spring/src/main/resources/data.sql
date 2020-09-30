@@ -11,3 +11,5 @@ insert into employee (id, name, age, salary, employer_id) values (-5, 'employee6
 insert into employee (id, name, age, salary, employer_id) values (-6, 'employee7', 30, 1800, -2);
 insert into employee (id, name, age, salary, employer_id) values (-7, 'employee8', 20, 3000, -2);
 insert into employee (id, name, age, salary, employer_id) values (-8, 'employee9', 20, 2500, -2);
+
+insert into foro (id, moderado, nombre) values (-1, true, 'Foro Tecnología');

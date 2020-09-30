@@ -4,7 +4,8 @@ import { environment } from '../environments/environment';
 import { throwError, Observable, } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Foro } from '../entities/foro';
-import {
+import { Tema } from 'src/entities/tema';
+import{
   HttpHeaders
 } from "@angular/common/http";
 
@@ -71,6 +72,11 @@ export class ForoServiceService {
   findAll() {
     const url = `${environment.baseUrl}/foros`;
     return this.getForo<Foro[]>(url);
+  }
+
+  findAllTemas(id: number) {
+    const url = `${environment.baseUrl}/foros/${id}/temas`;
+    return this.getForo<Tema[]>(url);
   }
 
   update(foro: Foro) {

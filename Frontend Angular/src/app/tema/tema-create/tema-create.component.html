@@ -1,1 +1,90 @@
-<p>tema-create works!</p>
+<div class="container">
+    <form (ngSubmit)="create()" #createForm="ngForm">
+      <div class="form-group">
+        <label for="name">Titulo</label>
+        <input
+          id="titulo"
+          class="form-control"
+          type="text"
+          name="titulo"
+          required
+          [(ngModel)]="tema.titulo"
+          #txtName="ngModel"
+        />
+        <div
+          [hidden]="txtName.valid || !txtName.touched"
+          class="alert alert-danger"
+        >
+          titulo is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Contenido</label>
+        <input
+          id="contenido"
+          class="form-control"
+          type="text"
+          name="contenido"
+          required
+          [(ngModel)]="tema.contenido"
+          #txtName="ngModel"
+        />
+        <div
+          [hidden]="txtName.valid || !txtName.touched"
+          class="alert alert-danger"
+        >
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Fecha Publicación</label>
+        <input
+          id="fecha"
+          class="form-control"
+          type="text"
+          name="fecha"
+          required
+          [(ngModel)]="tema.fechaPublicacion"
+          #txtName="ngModel"
+        />
+        <div
+          [hidden]="txtName.valid || !txtName.touched"
+          class="alert alert-danger"
+        >
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Rating</label>
+        <input
+          id="rating"
+          class="form-control"
+          type="number"
+          name="rating"
+          required
+          [(ngModel)]="tema.rating"
+          #txtName="ngModel"
+        />
+        <div
+          [hidden]="txtName.valid || !txtName.touched"
+          class="alert alert-danger"
+        >
+          Name is required
+        </div>
+      </div>
+  
+     
+  
+      <button type="submit" [disabled]="!canSubmit">
+        Crear tema
+      </button>
+      <button (click)="cancel()">Cancelar</button>
+    </form>
+  
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  </div>

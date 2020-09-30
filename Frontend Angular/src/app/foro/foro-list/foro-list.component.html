@@ -6,17 +6,17 @@
           <th>Id</th>
           <th>Nombre</th>
           <th>Moderado</th>
+          <th>Temas</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let foro2 of foro">
           <td>
-            <a [routerLink]="['/temas', foro2.id]">{{
-              foro2.id
-            }}</a>
+            <a>{{foro2.id}}</a>
           </td>
           <td>{{ foro2.nombre }}</td>
           <td>{{ foro2.moderado }}</td>
+          <td><a [routerLink]="['/temas', foro2.id]">Ver Temas</a></td>
         </tr>
       </tbody>
     </table>
