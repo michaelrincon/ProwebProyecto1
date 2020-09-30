@@ -1,1 +1,24 @@
-<p>login works!</p>
+<mat-card>
+    <mat-card-title style="font-size: xx-large;">Inicio sesión</mat-card-title>
+<mat-card-content>
+<form (ngSubmit)="submit()">
+  <p>
+    <mat-form-field style="font-size: larger;">
+      <input type="text" [(ngModel)]="user" name="user" matInput placeholder="Nombre usuario" >
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field style="font-size: larger;">
+      <input type="password" [(ngModel)]="password" name="password" matInput placeholder="Contraseña" >
+    </mat-form-field>
+  </p>
+
+
+  <div class="button">
+    <button type="submit" mat-raised-button color="primary">Iniciar sesión</button>
+  </div>
+
+</form>
+</mat-card-content>
+</mat-card>
