@@ -6,6 +6,7 @@ import { catchError, retry } from 'rxjs/operators';
 
 import {HttpHeaders} from "@angular/common/http";
 import { Comentario } from '../entities/comentario';
+import { Respuesta } from '../entities/respuesta';
 
 @Injectable({
   providedIn: 'root'
@@ -72,6 +73,11 @@ export class ComentarioServiceService {
     return this.getComentario<Comentario[]>(url);
   }
 
+  findAllRespuestas(id: number) {
+    const url = `${environment.baseUrl}/comentarios/${id}/respuestas`;
+    return this.getComentario<Respuesta[]>(url);
+  }
+
   update(comentario: Comentario) {
     const url = `${environment.baseUrl}/comentarios/${comentario.id}`;
     return this.putComentario(url, {
@@ -88,7 +94,8 @@ export class ComentarioServiceService {
       fecha: comentario.fecha,
       contenido: comentario.contenido,
       rating: comentario.rating,
-      comentarioTema: comentario.temaComentario
+      comentarioTema: comentario.temaComentario,
+      tipoUsuario: sessionStorage.getItem('usuario')
 
     });
   }

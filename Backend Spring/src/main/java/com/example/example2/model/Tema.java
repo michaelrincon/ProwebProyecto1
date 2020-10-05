@@ -21,6 +21,7 @@ public class Tema {
     private String titulo;
     private String contenido;
     private int rating;
+    private String tipoUsuario;
 
     @ManyToOne
     private Foro temaForo;
@@ -64,6 +65,15 @@ public class Tema {
 
     public String getContenido() {
         return contenido;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 
 

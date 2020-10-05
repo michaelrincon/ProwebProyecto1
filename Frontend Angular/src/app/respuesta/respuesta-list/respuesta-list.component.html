@@ -1,0 +1,22 @@
+<div>
+    <a [routerLink]="['/temas/',idForo,'comentarios',idTema,'respuestas',idComentario,'create']">Crear respuesta</a>
+    <table class="table table-light">
+      <thead class="thead-light">
+        <tr>
+          <th>Id</th>
+          <th>Contenido</th>
+          <th>Fecha</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let respuesta of respuestas">
+          <td>{{ respuesta.id}}</td>
+          <td>{{ respuesta.contenido }}</td>
+          <td>{{ respuesta.fecha }}</td>
+          <td>{{ respuesta.rating }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+

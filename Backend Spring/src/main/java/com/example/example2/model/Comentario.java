@@ -20,11 +20,12 @@ public class Comentario {
     private String fecha;
     private String contenido;
     private int rating;
+    private String tipoUsuario;
 
     @ManyToOne
     private Tema comentarioTema;
 
-    @OneToMany(mappedBy = "respuestasComentarios")
+    @OneToMany(mappedBy = "comentarioResp")
     @JsonIgnore // https://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion
     private List<Respuesta> respuestas;
 
@@ -61,6 +62,15 @@ public class Comentario {
     
     public void setContenido(String contenido) {
         this.contenido = contenido;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 
     public int getRating() {

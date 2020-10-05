@@ -54,6 +54,7 @@ import { ComentarioListComponent } from './comentario/comentario-list/comentario
 import { ComentarioCreateComponent } from './comentario/comentario-create/comentario-create.component';
 import { RespuestaCreateComponent } from './respuesta/respuesta-create/respuesta-create.component';
 import { LoginComponent } from './login/login.component';
+import { RespuestaListComponent } from './respuesta/respuesta-list/respuesta-list.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { LoginComponent } from './login/login.component';
     ComentarioListComponent,
     ComentarioCreateComponent,
     RespuestaCreateComponent,
-    LoginComponent
+    LoginComponent,
+    RespuestaListComponent
   ],
   imports: [
     BrowserModule,

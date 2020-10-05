@@ -17,6 +17,8 @@ export class ForoListComponent implements OnInit {
     private foroService: ForoServiceService, private loginService: LoginServicesService) { }
 
   ngOnInit(): void {
+
+    console.log(sessionStorage.getItem('usuario'));
     this.findForos();
   }
 

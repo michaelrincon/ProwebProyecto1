@@ -17,9 +17,10 @@ public class Respuesta {
     private String fecha;
     private String contenido;
     private int rating;
+    private String tipoUsuario;
 
     @ManyToOne
-    private Comentario respuestasComentarios;
+    private Comentario comentarioResp;
 
 
 
@@ -50,6 +51,15 @@ public class Respuesta {
         this.contenido = contenido;
     }
 
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
     public int getRating() {
         return rating;
     }
@@ -60,11 +70,11 @@ public class Respuesta {
     }
 
     public Comentario getComentario() {
-        return respuestasComentarios;
+        return comentarioResp;
     }
 
 
     public void setComentario(Comentario resComentario) {
-        this.respuestasComentarios = resComentario;
+        this.comentarioResp = resComentario;
     }
 }

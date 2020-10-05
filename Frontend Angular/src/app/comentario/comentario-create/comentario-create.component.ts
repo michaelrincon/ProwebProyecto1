@@ -54,7 +54,7 @@ export class ComentarioCreateComponent implements OnInit {
         this.tema = result1;
         this.comentario.temaComentario = this.tema;
         this.submitted = true;
-        console.log(this.comentario);
+        console.log(this.comentario.temaComentario+'aquii comen');
         this.comentarioService.create(this.comentario).subscribe(
           result => {
             console.log(result);

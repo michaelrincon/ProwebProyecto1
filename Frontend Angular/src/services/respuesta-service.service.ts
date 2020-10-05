@@ -3,14 +3,15 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { throwError, Observable, } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Tema } from 'src/entities/tema';
-import { HttpHeaders } from "@angular/common/http";
+
+import {HttpHeaders} from "@angular/common/http";
 import { Comentario } from '../entities/comentario';
+import { Respuesta } from '../entities/respuesta';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TemaServiceService {
+export class RespuestaServiceService {
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +20,7 @@ export class TemaServiceService {
     return throwError("An error has occurred");
   }
 
-  private getTema<T>(url): Observable<T> {
+  private getRespuesta<T>(url): Observable<T> {
     console.log("get:", url);
     return this.http
       .get<T>(url, {
@@ -35,7 +36,7 @@ export class TemaServiceService {
       );
   }
 
-  private postTema<T>(url, data: T): Observable<T> {
+  private postRespuesta<T>(url, data: T): Observable<T> {
     console.log("post:", url);
     return this.http
       .post<T>(url, data, {
@@ -49,7 +50,7 @@ export class TemaServiceService {
         catchError(this.handleError)
       );
   }
-  private putTema<T>(url, data: T): Observable<T> {
+  private putRespuesta<T>(url, data: T): Observable<T> {
     console.log("put:", url);
     return this.http.put<T>(url, data, {
       withCredentials: true
@@ -62,40 +63,36 @@ export class TemaServiceService {
   findById(
     id: number // : Observable<Employee>
 ) {
-    const url = `${environment.baseUrl}/temas/${id}`;
-    return this.getTema<Tema>(url);
+    const url = `${environment.baseUrl}/respuestas/${id}`;
+    return this.getRespuesta<Respuesta>(url);
     
   }
 
   findAll() {
-    const url = `${environment.baseUrl}/temas`;
-    return this.getTema<Tema[]>(url);
+    const url = `${environment.baseUrl}/respuestas`;
+    return this.getRespuesta<Respuesta[]>(url);
   }
 
-  findAllComentarios(id: number) {
-    const url = `${environment.baseUrl}/temas/${id}/comentarios`;
-    return this.getTema<Comentario[]>(url);
-  }
+  update(respuesta: Respuesta) {
+    const url = `${environment.baseUrl}/respuestas/${respuesta.id}`;
+    return this.putRespuesta(url, {
 
-  update(tema: Tema) {
-    const url = `${environment.baseUrl}/temas/${tema.id}`;
-    return this.putTema(url, {
-      titulo: tema.titulo,
-      fechaPublicacion: tema.fechaPublicacion,
-      contenido: tema.contenido,
-      rating: tema.rating
+      fecha: respuesta.fecha,
+      contenido: respuesta.contenido,
+      rating: respuesta.rating
+
     });
   }
-  create(tema: Tema) {
-    const url = `${environment.baseUrl}/temas`;
-    return this.postTema(url, {
-      titulo: tema.titulo,
-      fechaPublicacion: tema.fechaPublicacion,
-      contenido: tema.contenido,
-      rating: tema.rating,
-      temaForo: tema.foroTema,
+  create(respuesta: Respuesta) {
+    const url = `${environment.baseUrl}/respuestas`;
+    console.log('impresionnnn servicioooo'+respuesta.comentarioRespuesta.id);
+    return this.postRespuesta(url, {
+      fecha: respuesta.fecha,
+      contenido: respuesta.contenido,
+      rating: respuesta.rating,
+      comentario: respuesta.comentarioRespuesta,
       tipoUsuario: sessionStorage.getItem('usuario')
+
     });
   }
-
 }
