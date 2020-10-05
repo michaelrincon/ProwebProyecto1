@@ -49,6 +49,8 @@ export class ComentarioCreateComponent implements OnInit {
   }
 
   create() {
+    this.comentario.rating = 0;
+    this.comentario.fecha = new Date().toLocaleString();
     this.temaService.findById(this.idTema).subscribe(
       result1 =>{
         this.tema = result1;

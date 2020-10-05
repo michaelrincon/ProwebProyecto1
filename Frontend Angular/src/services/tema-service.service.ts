@@ -86,6 +86,14 @@ export class TemaServiceService {
       rating: tema.rating
     });
   }
+
+  updateRating(tema:Tema){
+    const url = `${environment.baseUrl}/temas/${tema.id}/rating`;
+    
+    return this.putTema(url, {
+      rating: tema.rating
+    });
+  }
   create(tema: Tema) {
     const url = `${environment.baseUrl}/temas`;
     return this.postTema(url, {

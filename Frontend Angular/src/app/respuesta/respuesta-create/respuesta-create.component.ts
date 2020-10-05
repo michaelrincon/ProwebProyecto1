@@ -53,6 +53,8 @@ export class RespuestaCreateComponent implements OnInit {
   }
 
   create() {
+    this.respuesta.rating = 0;
+    this.respuesta.fecha = new Date().toLocaleString();
     this.comentarioService.findById(this.idComentario).subscribe(
       result1 =>{
         this.comentario = result1;

@@ -19,45 +19,6 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="name">Fecha</label>
-        <input
-          id="fecha"
-          class="form-control"
-          type="text"
-          name="fecha"
-          required
-          [(ngModel)]="comentario.fecha"
-          #txtName="ngModel"
-        />
-        <div
-          [hidden]="txtName.valid || !txtName.touched"
-          class="alert alert-danger"
-        >
-          Name is required
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="name">Rating</label>
-        <input
-          id="rating"
-          class="form-control"
-          type="number"
-          name="rating"
-          required
-          [(ngModel)]="comentario.rating"
-          #txtName="ngModel"
-        />
-        <div
-          [hidden]="txtName.valid || !txtName.touched"
-          class="alert alert-danger"
-        >
-          Name is required
-        </div>
-      </div>
-  
-     
   
       <button type="submit" [disabled]="!canSubmit">
         Crear Comentario

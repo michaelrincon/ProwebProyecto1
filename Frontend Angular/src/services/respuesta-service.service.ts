@@ -83,6 +83,15 @@ export class RespuestaServiceService {
 
     });
   }
+
+  updateRating(respuesta: Respuesta) {
+    const url = `${environment.baseUrl}/respuestas/${respuesta.id}/rating`;
+    return this.putRespuesta(url, {
+
+      rating: respuesta.rating
+
+    });
+  }
   create(respuesta: Respuesta) {
     const url = `${environment.baseUrl}/respuestas`;
     console.log('impresionnnn servicioooo'+respuesta.comentarioRespuesta.id);

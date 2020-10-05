@@ -19,6 +19,8 @@
           <td>{{ tema.fechaPublicacion }}</td>
           <td>{{ tema.rating }}</td>
           <td><a [routerLink]="['/temas', idForo,'comentarios',tema.id]">Ver Comentarios</a></td>
+          <td (click)="masRating(tema.id)">Subir rating</td>
+          <td (click)="menosRating(tema.id)">Bajar rating</td>
         </tr>
       </tbody>
     </table>

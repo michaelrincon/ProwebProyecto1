@@ -88,6 +88,15 @@ export class ComentarioServiceService {
 
     });
   }
+
+  updateRating(comentario: Comentario){
+    const url = `${environment.baseUrl}/comentarios/${comentario.id}/rating`;
+    
+    return this.putComentario(url, {
+      rating: comentario.rating
+    });
+  }
+
   create(comentario: Comentario) {
     const url = `${environment.baseUrl}/comentarios`;
     return this.postComentario(url, {

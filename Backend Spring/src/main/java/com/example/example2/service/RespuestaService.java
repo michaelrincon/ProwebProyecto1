@@ -52,6 +52,17 @@ public class RespuestaService {
         return repository.save(respuesta);
     }
 
+    @PutMapping("/respuestas/{id}/rating")
+    Respuesta updateRespuestaRating(@PathVariable Long id, @RequestBody Respuesta respuestaData) {
+
+        Respuesta respuesta = findRespuesta(id);
+        respuesta.setRating(respuestaData.getRating());
+
+        // How to update the employer Company?
+
+        return repository.save(respuesta);
+    }
+
     @DeleteMapping("/respuestas/{id}")
     void deleteComentario(@PathVariable Long id) {
         if (repository.existsById(id)) {

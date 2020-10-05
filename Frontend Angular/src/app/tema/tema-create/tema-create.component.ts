@@ -46,6 +46,8 @@ export class TemaCreateComponent implements OnInit {
 
   
   create() {
+    this.tema.rating = 0;
+    this.tema.fechaPublicacion = new Date().toLocaleString();
     this.foroService.findById(this.idForo).subscribe(
       result1 =>{
         this.foro = result1;

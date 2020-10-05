@@ -60,6 +60,18 @@ public class ComentarioService {
         return repository.save(comentario);
     }
 
+    @PutMapping("/comentarios/{id}/rating")
+    Comentario updateComentarioRating(@PathVariable Long id, @RequestBody Comentario comentarioData) {
+
+        Comentario comentario = findComentario(id);
+        comentario.setRating(comentarioData.getRating());
+       //comentario.setRespuestas(comentarioData.getRespuestas());
+        //DEJAR ASI POR AHORA DESPUES VER SI SE COLOCAN MAS ATRIBUTOS AQUI
+        // How to update the employer Company?
+
+        return repository.save(comentario);
+    }
+
     @DeleteMapping("/comentarios/{id}")
     void deleteComentario(@PathVariable Long id) {
         if (repository.existsById(id)) {
