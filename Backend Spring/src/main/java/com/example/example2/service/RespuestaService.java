@@ -44,8 +44,6 @@ public class RespuestaService {
 
         Respuesta respuesta = findRespuesta(id);
         respuesta.setContenido(respuestaData.getContenido());
-        respuesta.setFecha(respuestaData.getFecha());
-        respuesta.setRating(respuestaData.getRating());
 
         // How to update the employer Company?
 

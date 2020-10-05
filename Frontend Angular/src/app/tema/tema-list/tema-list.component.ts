@@ -18,9 +18,6 @@ export class TemaListComponent implements OnInit {
   ratingMenos: number = -1;
   private sub: any;
  idForo: number = 0;
- aux: number = 0;
- i: number = 0;
- j: number = 0;
 
   constructor(private route: ActivatedRoute, private router: Router, private temaService: TemaServiceService,
     private foroService: ForoServiceService) { }
@@ -92,6 +89,14 @@ export class TemaListComponent implements OnInit {
         this.organizarLista(this.temas);
       },
       error => console.error(error)
+    );
+  }
+
+  eliminar(idTema: number){
+    this.temaService.delete(idTema).subscribe(
+      results => {
+        window.location.reload();
+      }
     );
   }
 }

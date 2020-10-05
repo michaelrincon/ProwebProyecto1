@@ -59,6 +59,22 @@ export class TemaServiceService {
     );
   }
 
+  private deleteTema<T>(url): Observable<T> {
+    console.log("delete:", url);
+    return this.http
+      .delete<T>(url, {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        }),
+        withCredentials: true
+      })
+      .pipe(
+        // retry(5),
+        catchError(this.handleError)
+      );
+  }
+
   findById(
     id: number // : Observable<Employee>
 ) {
@@ -81,9 +97,7 @@ export class TemaServiceService {
     const url = `${environment.baseUrl}/temas/${tema.id}`;
     return this.putTema(url, {
       titulo: tema.titulo,
-      fechaPublicacion: tema.fechaPublicacion,
       contenido: tema.contenido,
-      rating: tema.rating
     });
   }
 
@@ -104,6 +118,14 @@ export class TemaServiceService {
       temaForo: tema.foroTema,
       tipoUsuario: sessionStorage.getItem('usuario')
     });
+  }
+
+  delete(
+    id: number // : Observable<Employee>
+) {
+    const url = `${environment.baseUrl}/temas/${id}`;
+    return this.deleteTema<Tema>(url);
+    
   }
 
 }

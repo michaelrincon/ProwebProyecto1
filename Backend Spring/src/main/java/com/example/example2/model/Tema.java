@@ -2,6 +2,7 @@ package com.example.example2.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ public class Tema {
     private Foro temaForo;
 
 
-    @OneToMany(mappedBy = "comentarioTema")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "comentarioTema", orphanRemoval = true)
     @JsonIgnore // https://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion
     private List<Comentario> comentarios;
 

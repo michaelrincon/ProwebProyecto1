@@ -98,4 +98,11 @@ export class RespuestaListComponent implements OnInit {
     );
   }
 
+  eliminar(idrespuesta: number){
+    this.respuestaService.delete(idrespuesta).subscribe(
+      results => {
+        window.location.reload();
+      }
+    );
+  }
 }

@@ -51,8 +51,6 @@ public class ComentarioService {
 
         Comentario comentario = findComentario(id);
         comentario.setContenido(comentarioData.getContenido());
-        comentario.setFecha(comentarioData.getFecha());
-        comentario.setRating(comentarioData.getRating());
        //comentario.setRespuestas(comentarioData.getRespuestas());
         //DEJAR ASI POR AHORA DESPUES VER SI SE COLOCAN MAS ATRIBUTOS AQUI
         // How to update the employer Company?

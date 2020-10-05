@@ -51,8 +51,6 @@ public class TemaService {
 
         Tema tema = findTema(id);
         tema.setContenido(temaData.getContenido());
-        tema.setFechaPublicacion(temaData.getFechaPublicacion());
-        tema.setRating(temaData.getRating());
         tema.setTitulo(temaData.getTitulo());
 
         //DEJAR ASI POR AHORA DESPUES VER SI SE COLOCAN MAS ATRIBUTOS AQUI

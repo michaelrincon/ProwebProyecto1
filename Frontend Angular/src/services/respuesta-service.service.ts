@@ -60,6 +60,22 @@ export class RespuestaServiceService {
     );
   }
 
+  private deleteRespuesta<T>(url): Observable<T> {
+    console.log("delete:", url);
+    return this.http
+      .delete<T>(url, {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        }),
+        withCredentials: true
+      })
+      .pipe(
+        // retry(5),
+        catchError(this.handleError)
+      );
+  }
+
   findById(
     id: number // : Observable<Employee>
 ) {
@@ -77,9 +93,7 @@ export class RespuestaServiceService {
     const url = `${environment.baseUrl}/respuestas/${respuesta.id}`;
     return this.putRespuesta(url, {
 
-      fecha: respuesta.fecha,
       contenido: respuesta.contenido,
-      rating: respuesta.rating
 
     });
   }
@@ -103,5 +117,13 @@ export class RespuestaServiceService {
       tipoUsuario: sessionStorage.getItem('usuario')
 
     });
+  }
+
+  delete(
+    id: number // : Observable<Employee>
+) {
+    const url = `${environment.baseUrl}/respuestas/${id}`;
+    return this.deleteRespuesta<Respuesta>(url);
+    
   }
 }

@@ -1,24 +1,5 @@
 <div class="container">
-    <form (ngSubmit)="editarTema()" #createForm="ngForm">
-      <div class="form-group">
-        <label for="name">Titulo</label>
-        <input
-          id="titulo"
-          class="form-control"
-          type="text"
-          name="titulo"
-          required
-          [(ngModel)]="tema.titulo"
-          #txtName="ngModel"
-        />
-        <div
-          [hidden]="txtName.valid || !txtName.touched"
-          class="alert alert-danger"
-        >
-          titulo is required
-        </div>
-      </div>
-
+    <form (ngSubmit)="editarRespuesta()" #createForm="ngForm">
       <div class="form-group">
         <label for="name">Contenido</label>
         <input
@@ -27,7 +8,7 @@
           type="text"
           name="contenido"
           required
-          [(ngModel)]="tema.contenido"
+          [(ngModel)]="respuesta.contenido"
           #txtName="ngModel"
         />
         <div
@@ -40,7 +21,7 @@
 
   
       <button type="submit" [disabled]="!canSubmit">
-        Editar tema
+        Editar Respuesta
       </button>
       <button (click)="cancel()">Cancelar</button>
     </form>

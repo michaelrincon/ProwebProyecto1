@@ -15,6 +15,8 @@
           <td>{{ respuesta.contenido }}</td>
           <td>{{ respuesta.fecha }}</td>
           <td>{{ respuesta.rating }}</td>
+          <td><a [routerLink]="['/temas', idForo,'comentarios',idTema,'respuestas',idComentario, 'edit', respuesta.id]">Editar Respuesta</a></td>
+          <td (click)='eliminar(respuesta.id)'>Eliminar Respuesta</td>
           <td (click)='masRating(respuesta.id)'>Subir rating</td>
           <td (click)='menosRating(respuesta.id)'>Bajar rating</td>
         </tr>

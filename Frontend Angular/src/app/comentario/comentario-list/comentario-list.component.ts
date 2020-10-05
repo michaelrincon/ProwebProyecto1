@@ -93,5 +93,13 @@ export class ComentarioListComponent implements OnInit {
       error => console.error(error)
     );
   }
+  
+  eliminar(idcomentario: number){
+    this.comentarioServices.delete(idcomentario).subscribe(
+      results => {
+        window.location.reload();
+      }
+    );
+  }
 
 }

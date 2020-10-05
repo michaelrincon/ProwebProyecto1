@@ -60,6 +60,23 @@ export class ComentarioServiceService {
     );
   }
 
+  
+  private deleteComentario<T>(url): Observable<T> {
+    console.log("delete:", url);
+    return this.http
+      .delete<T>(url, {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        }),
+        withCredentials: true
+      })
+      .pipe(
+        // retry(5),
+        catchError(this.handleError)
+      );
+  }
+
   findById(
     id: number // : Observable<Employee>
 ) {
@@ -82,9 +99,7 @@ export class ComentarioServiceService {
     const url = `${environment.baseUrl}/comentarios/${comentario.id}`;
     return this.putComentario(url, {
 
-      fecha: comentario.fecha,
       contenido: comentario.contenido,
-      rating: comentario.rating
 
     });
   }
@@ -107,5 +122,13 @@ export class ComentarioServiceService {
       tipoUsuario: sessionStorage.getItem('usuario')
 
     });
+  }
+
+  delete(
+    id: number // : Observable<Employee>
+) {
+    const url = `${environment.baseUrl}/comentarios/${id}`;
+    return this.deleteComentario<Comentario>(url);
+    
   }
 }

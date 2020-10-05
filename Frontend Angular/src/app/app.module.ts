@@ -55,6 +55,8 @@ import { ComentarioCreateComponent } from './comentario/comentario-create/coment
 import { RespuestaCreateComponent } from './respuesta/respuesta-create/respuesta-create.component';
 import { LoginComponent } from './login/login.component';
 import { RespuestaListComponent } from './respuesta/respuesta-list/respuesta-list.component';
+import { ComentarioViewComponent } from './comentario/comentario-view/comentario-view.component';
+import { RespuestaViewComponent } from './respuesta/respuesta-view/respuesta-view.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { RespuestaListComponent } from './respuesta/respuesta-list/respuesta-lis
     ComentarioCreateComponent,
     RespuestaCreateComponent,
     LoginComponent,
-    RespuestaListComponent
+    RespuestaListComponent,
+    ComentarioViewComponent,
+    RespuestaViewComponent
   ],
   imports: [
     BrowserModule,

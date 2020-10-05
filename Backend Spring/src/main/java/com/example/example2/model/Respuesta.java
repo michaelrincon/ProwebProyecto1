@@ -20,7 +20,7 @@ public class Respuesta {
     private String tipoUsuario;
 
     @ManyToOne
-    private Comentario comentarioResp;
+    private Comentario comentario;
 
 
 
@@ -70,11 +70,11 @@ public class Respuesta {
     }
 
     public Comentario getComentario() {
-        return comentarioResp;
+        return comentario;
     }
 
 
     public void setComentario(Comentario resComentario) {
-        this.comentarioResp = resComentario;
+        this.comentario = resComentario;
     }
 }
