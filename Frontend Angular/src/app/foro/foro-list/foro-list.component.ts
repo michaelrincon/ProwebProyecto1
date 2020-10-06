@@ -18,7 +18,7 @@ export class ForoListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(sessionStorage.getItem('usuario'));
+    console.log(sessionStorage.getItem('usuario')+ "usuariooo");
     this.findForos();
   }
 
@@ -36,6 +36,7 @@ export class ForoListComponent implements OnInit {
   logout() {
     this.loginService.logout().subscribe(data => {
       this.router.navigate(['/']);
+      sessionStorage.clear();
       }, error => {
         console.error(error);
       });
