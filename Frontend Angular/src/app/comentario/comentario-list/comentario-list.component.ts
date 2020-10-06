@@ -23,6 +23,9 @@ export class ComentarioListComponent implements OnInit {
   private sub: any;
   idForo: number = 0;
   idTema: number = 0;
+  tipoUsuario: string = sessionStorage.getItem('usuario');
+  validacionOcultar: boolean;
+  usuario: boolean;
 
 
   constructor(private route: ActivatedRoute, private router: Router, private temaService: TemaServiceService, private comentarioServices: ComentarioServiceService) { }
@@ -36,6 +39,13 @@ export class ComentarioListComponent implements OnInit {
     console.log(this.idTema+" id tema");
 
     this.findComentarios();
+
+    if(sessionStorage.getItem('usuario') == 'usuario'){
+      this.validacionOcultar = true;
+    }
+    else{
+      this.validacionOcultar = false;
+    }
   }
 
   masRating( idComentario: number){
@@ -78,7 +88,7 @@ export class ComentarioListComponent implements OnInit {
 
   organizarLista(comentario: Comentario[]){
     comentario.sort(function (a, b){
-      return (a.rating - b.rating)
+      return (b.rating - a.rating)
   });
   }
 
@@ -99,6 +109,22 @@ export class ComentarioListComponent implements OnInit {
       results => {
         window.location.reload();
       }
+    );
+  }
+
+  aceptarModerado(idComentario: number){
+
+    this.comentarioServices.findById(idComentario).subscribe(
+      results => {
+        this.comentarioRating = results;
+        this.comentarioRating.moderado = true;
+        this.comentarioServices.updateModerado(this.comentarioRating).subscribe(
+          results2 =>{
+            window.location.reload();
+          }
+        );
+      },
+      error => console.error(error)
     );
   }
 

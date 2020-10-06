@@ -23,6 +23,7 @@ public class Tema {
     private String contenido;
     private int rating;
     private String tipoUsuario;
+    private Boolean moderado;
 
     @ManyToOne
     private Foro temaForo;
@@ -107,6 +108,14 @@ public class Tema {
 
     public void setTemaForo(Foro temaForo) {
         this.temaForo = temaForo;
+    }
+
+    public Boolean getModerado(){
+        return moderado;
+    }
+
+    public void setModerado(Boolean moderado){
+        this.moderado = moderado;
     }
     
 }

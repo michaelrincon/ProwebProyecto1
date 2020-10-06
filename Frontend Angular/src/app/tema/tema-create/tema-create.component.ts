@@ -23,6 +23,8 @@ export class TemaCreateComponent implements OnInit {
     undefined,
     undefined,
     undefined,
+    undefined, 
+    undefined,
     undefined
   );
 
@@ -33,6 +35,7 @@ export class TemaCreateComponent implements OnInit {
  idForo: number = 0;
 
  foro: Foro;
+
 
   constructor(private route: ActivatedRoute, private router: Router, private temaService: TemaServiceService, 
     private foroService: ForoServiceService) { }
@@ -46,12 +49,17 @@ export class TemaCreateComponent implements OnInit {
 
   
   create() {
+    this.tema.moderado = true;
     this.tema.rating = 0;
     this.tema.fechaPublicacion = new Date().toLocaleString();
     this.foroService.findById(this.idForo).subscribe(
       result1 =>{
         this.foro = result1;
         this.tema.foroTema = this.foro;
+        if (this.foro.moderado == true){
+          this.tema.moderado = false;
+          console.log("entraaa aquiiiiii"+this.tema.moderado);
+        }
         this.submitted = true;
         console.log(this.tema);
         this.temaService.create(this.tema).subscribe(

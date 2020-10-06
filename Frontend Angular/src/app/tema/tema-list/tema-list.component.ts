@@ -18,6 +18,9 @@ export class TemaListComponent implements OnInit {
   ratingMenos: number = -1;
   private sub: any;
  idForo: number = 0;
+ tipoUsuario: string = sessionStorage.getItem('usuario');
+ validacionOcultar: boolean;
+ usuario: boolean;
 
   constructor(private route: ActivatedRoute, private router: Router, private temaService: TemaServiceService,
     private foroService: ForoServiceService) { }
@@ -32,11 +35,18 @@ export class TemaListComponent implements OnInit {
     
 
     this.findTemas();
+    if(sessionStorage.getItem('usuario') == 'usuario'){
+      this.validacionOcultar = true;
+    }
+    else{
+      this.validacionOcultar = false;
+    }
+
   }
 
   organizarLista(tema: Tema[]){
     tema.sort(function (a, b){
-      return (a.rating - b.rating)
+      return (b.rating - a.rating)
   });
   }
 
@@ -97,6 +107,22 @@ export class TemaListComponent implements OnInit {
       results => {
         window.location.reload();
       }
+    );
+  }
+
+  aceptarModerado(idTema: number){
+
+    this.temaService.findById(idTema).subscribe(
+      results => {
+        this.temaRating = results;
+        this.temaRating.moderado = true;
+        this.temaService.updateModerado(this.temaRating).subscribe(
+          results2 =>{
+            window.location.reload();
+          }
+        );
+      },
+      error => console.error(error)
     );
   }
 }

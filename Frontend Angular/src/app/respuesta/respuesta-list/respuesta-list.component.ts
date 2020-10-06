@@ -25,6 +25,9 @@ export class RespuestaListComponent implements OnInit {
   idForo: number = 0;
   idTema: number = 0;
   idComentario: number = 0;
+  tipoUsuario: string = sessionStorage.getItem('usuario');
+  validacionOcultar: boolean;
+  usuario: boolean;
 
 
   constructor(private route: ActivatedRoute, private router: Router, private comentarioService: ComentarioServiceService, private respuestaService: RespuestaServiceService) { }

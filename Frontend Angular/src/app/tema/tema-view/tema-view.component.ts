@@ -21,6 +21,8 @@ export class TemaViewComponent implements OnInit {
     undefined,
     undefined,
     undefined,
+    undefined,
+    undefined,
     undefined
   );
 

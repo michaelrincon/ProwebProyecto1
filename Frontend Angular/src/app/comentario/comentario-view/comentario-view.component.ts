@@ -23,6 +23,8 @@ export class ComentarioViewComponent implements OnInit {
     undefined,
     undefined,
     undefined,
+    undefined,
+    undefined,
     undefined
   );
 

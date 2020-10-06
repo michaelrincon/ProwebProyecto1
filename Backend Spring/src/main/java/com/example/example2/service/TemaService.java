@@ -71,6 +71,18 @@ public class TemaService {
         return repository.save(tema);
     }
 
+    @PutMapping("/temas/{id}/moderado")
+    Tema updateTemaModerado(@PathVariable Long id, @RequestBody Tema temaData) {
+
+        Tema tema = findTema(id);
+        tema.setModerado(temaData.getModerado());
+
+        //DEJAR ASI POR AHORA DESPUES VER SI SE COLOCAN MAS ATRIBUTOS AQUI
+        // How to update the employer Company?
+
+        return repository.save(tema);
+    }
+
     @DeleteMapping("/temas/{id}")
     void deleteTemas(@PathVariable Long id) {
         if (repository.existsById(id)) {

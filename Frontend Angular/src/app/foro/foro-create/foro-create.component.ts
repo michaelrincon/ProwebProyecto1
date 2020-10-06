@@ -28,10 +28,11 @@ export class ForoCreateComponent implements OnInit {
     private loginService: LoginServicesService) { }
 
   ngOnInit(): void {
+    this.foro.moderado = false;
   }
 
   create() {
-    this.foro.moderado = true;
+    
     this.submitted = true;
     console.log(this.foro);
     this.foroService.create(this.foro).subscribe(

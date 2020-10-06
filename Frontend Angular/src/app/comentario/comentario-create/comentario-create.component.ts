@@ -5,6 +5,8 @@ import { Tema } from '../../../entities/tema';
 import { TemaServiceService } from '../../../services/tema-service.service';
 import { Comentario } from '../../../entities/comentario';
 import { ComentarioServiceService } from '../../../services/comentario-service.service';
+import { ForoServiceService } from '../../../services/foro-service.service';
+import { Foro } from 'src/entities/foro';
 
 
 @Component({
@@ -25,6 +27,8 @@ export class ComentarioCreateComponent implements OnInit {
     undefined,
     undefined,
     undefined,
+    undefined,
+    undefined,
     undefined
   );
 
@@ -37,7 +41,9 @@ export class ComentarioCreateComponent implements OnInit {
 
  tema: Tema;
 
-  constructor(private route: ActivatedRoute, private router: Router, private temaService: TemaServiceService, private comentarioService: ComentarioServiceService) { }
+ foro: Foro;
+
+  constructor(private route: ActivatedRoute, private router: Router, private temaService: TemaServiceService, private comentarioService: ComentarioServiceService, private foroService: ForoServiceService) { }
 
   ngOnInit(): void {
 
@@ -48,26 +54,37 @@ export class ComentarioCreateComponent implements OnInit {
     console.log(this.idTema+" id tema 2");
   }
 
+
   create() {
+    this.comentario.moderado = true;
     this.comentario.rating = 0;
     this.comentario.fecha = new Date().toLocaleString();
     this.temaService.findById(this.idTema).subscribe(
       result1 =>{
         this.tema = result1;
         this.comentario.temaComentario = this.tema;
-        this.submitted = true;
-        console.log(this.comentario.temaComentario+'aquii comen');
-        this.comentarioService.create(this.comentario).subscribe(
-          result => {
-            console.log(result);
-            this.router.navigate(['/temas/', this.idForo, 'comentarios', this.idTema]);
-          },
-          error => {
-            console.error(error);
-            this.errorMessage = error.toString();
-            this.submitted = false;
-          }
+        this.foroService.findById(this.idForo).subscribe(
+          results2 => {
+            this.foro = results2;
+            if (this.foro.moderado == true){
+              this.comentario.moderado = false;
+            }
+            this.submitted = true;
+            this.comentarioService.create(this.comentario).subscribe(
+              result => {
+                console.log(result);
+                this.router.navigate(['/temas/', this.idForo, 'comentarios', this.idTema]);
+              },
+              error => {
+                console.error(error);
+                this.errorMessage = error.toString();
+                this.submitted = false;
+              }
     );
+          }
+          
+        );
+        
       }
     );
     

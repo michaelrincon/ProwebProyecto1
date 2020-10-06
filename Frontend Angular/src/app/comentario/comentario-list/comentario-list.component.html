@@ -12,15 +12,17 @@
       </thead>
       <tbody>
         <tr *ngFor="let comentario of comentarios">
-          <td>{{ comentario.id}}</td>
-          <td>{{ comentario.contenido }}</td>
-          <td>{{ comentario.fecha }}</td>
-          <td>{{ comentario.rating }}</td>
-          <td><a [routerLink]="['/temas', idForo,'comentarios',idTema,'respuestas',comentario.id]">Ver respuestas</a></td>
-          <td><a [routerLink]="['/temas', idForo,'comentarios',idTema,'edit',comentario.id]">Editar Comentario</a></td>
-          <td (click)="eliminar(comentario.id)">Eliminar</td>
-          <td (click)='masRating(comentario.id)'>Subir rating</td>
-          <td (click)='menosRating(comentario.id)'>Bajar rating</td>
+          <td *ngIf="comentario.moderado == true || validacionOcultar == false">{{ comentario.id}}</td>
+          <td *ngIf="comentario.moderado == true || validacionOcultar == false">{{ comentario.contenido }}</td>
+          <td *ngIf="comentario.moderado == true || validacionOcultar == false">{{ comentario.fecha }}</td>
+          <td *ngIf="comentario.moderado == true || validacionOcultar == false">{{ comentario.rating }}</td>
+          <td *ngIf="comentario.moderado == true || validacionOcultar == false"><a [routerLink]="['/temas', idForo,'comentarios',idTema,'respuestas',comentario.id]">Ver respuestas</a></td>
+          <td *ngIf="(comentario.moderado == true || validacionOcultar == false) && (comentario.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador')"><a [routerLink]="['/temas', idForo,'comentarios',idTema,'edit',comentario.id]">Editar Comentario</a></td>
+          <td *ngIf="(comentario.moderado == true || validacionOcultar == false) && (comentario.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador')" (click)="eliminar(comentario.id)">Eliminar</td>
+          <td *ngIf="comentario.moderado == true || validacionOcultar == false" (click)='masRating(comentario.id)'>Subir rating</td>
+          <td *ngIf="comentario.moderado == true || validacionOcultar == false" (click)='menosRating(comentario.id)'>Bajar rating</td>
+          <td *ngIf="validacionOcultar == false && comentario.moderado == false" (click)="aceptarModerado(comentario.id)">Aceptar tema</td>
+          <td *ngIf="validacionOcultar == false && comentario.moderado == false" (click)="eliminar(comentario.id)">Denegar tema</td>
         </tr>
       </tbody>
     </table>

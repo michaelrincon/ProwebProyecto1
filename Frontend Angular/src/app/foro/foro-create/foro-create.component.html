@@ -17,7 +17,16 @@
         >
           Name is required
         </div>
-      </div>
+
+      <label for="foro">Foro moderado</label>
+      <input
+        id="foro"
+        type="checkbox"
+        name="foro"
+        [(ngModel)]="foro.moderado"
+        #txtName="ngModel"
+      />
+    </div>
   
      
   

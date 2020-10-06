@@ -112,6 +112,14 @@ export class ComentarioServiceService {
     });
   }
 
+  updateModerado(comentario: Comentario){
+    const url = `${environment.baseUrl}/comentarios/${comentario.id}/moderado`;
+    
+    return this.putComentario(url, {
+      moderado: comentario.moderado
+    });
+  }
+
   create(comentario: Comentario) {
     const url = `${environment.baseUrl}/comentarios`;
     return this.postComentario(url, {
@@ -119,7 +127,8 @@ export class ComentarioServiceService {
       contenido: comentario.contenido,
       rating: comentario.rating,
       comentarioTema: comentario.temaComentario,
-      tipoUsuario: sessionStorage.getItem('usuario')
+      tipoUsuario: sessionStorage.getItem('usuario'),
+      moderado: comentario.moderado
 
     });
   }
@@ -131,4 +140,5 @@ export class ComentarioServiceService {
     return this.deleteComentario<Comentario>(url);
     
   }
+  
 }

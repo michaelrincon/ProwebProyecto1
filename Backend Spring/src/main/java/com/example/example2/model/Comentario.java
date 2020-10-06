@@ -22,6 +22,7 @@ public class Comentario {
     private String contenido;
     private int rating;
     private String tipoUsuario;
+    private Boolean moderado;
 
     @ManyToOne
     private Tema comentarioTema;
@@ -99,6 +100,14 @@ public class Comentario {
 
     public void setComentarioTema(Tema comentarioTema) {
         this.comentarioTema = comentarioTema;
+    }
+
+    public Boolean getModerado(){
+        return moderado;
+    }
+
+    public void setModerado(Boolean moderado){
+        this.moderado = moderado;
     }
 
 

@@ -108,6 +108,15 @@ export class TemaServiceService {
       rating: tema.rating
     });
   }
+
+  updateModerado(tema:Tema){
+    const url = `${environment.baseUrl}/temas/${tema.id}/moderado`;
+    
+    return this.putTema(url, {
+      moderado: tema.moderado
+    });
+  }
+
   create(tema: Tema) {
     const url = `${environment.baseUrl}/temas`;
     return this.postTema(url, {
@@ -116,7 +125,8 @@ export class TemaServiceService {
       contenido: tema.contenido,
       rating: tema.rating,
       temaForo: tema.foroTema,
-      tipoUsuario: sessionStorage.getItem('usuario')
+      tipoUsuario: sessionStorage.getItem('usuario'),
+      moderado: tema.moderado
     });
   }
 

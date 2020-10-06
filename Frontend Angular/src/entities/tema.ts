@@ -3,5 +3,5 @@ import { Foro } from './foro';
 
 export class Tema {
     // tslint:disable-next-line: max-line-length
-    constructor(public id: number, public fechaPublicacion: string, public titulo: string, public contenido: string, public comentarios: Comentario[], public rating: number, public foroTema: Foro){}
+    constructor(public id: number, public fechaPublicacion: string, public titulo: string, public contenido: string, public comentarios: Comentario[], public rating: number, public foroTema: Foro, public moderado: boolean, public tipoUsuario: string){}
 }
