@@ -56,11 +56,4 @@ export class ForoCreateComponent implements OnInit {
     return this.createForm.form.valid && !this.submitted;
   }
 
-
-  logout() {
-    this.loginService.logout().subscribe(data => {
-      }, error => {
-        console.error(error);
-      });
-  }
 }

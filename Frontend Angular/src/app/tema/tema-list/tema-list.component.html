@@ -1,31 +1,37 @@
 <div>
-    <a [routerLink]="['/temas/',idForo,'create']">Crear tema</a>
-    <table class="table table-light">
-      <thead class="thead-light">
+  <button style="float: right;" type="button" class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
+  <p class="h1">Temas</p>
+  <p class="h2">Lista Temas</p>
+    <table class="table">
+      <thead class="thead-dark">
         <tr>
-          <th>Id</th>
-          <th>Titulo</th>
-          <th>Contenido</th>
-          <th>Fecha</th>
-          <th>Rating</th>
-          <th>Comentarios</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Contenido</th>
+          <th scope="col">Fecha Publicación</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Comentarios</th>
+          <th scope="col">Me gusta</th>
+          <th scope="col">No me gusta</th>
         </tr>
       </thead>
       <tbody>
         <tr  *ngFor="let tema of temas">
-          <td *ngIf="tema.moderado == true || validacionOcultar == false">{{tema.id}}</td>
-          <td *ngIf="tema.moderado == true || validacionOcultar == false" >{{ tema.titulo }}</td>
+          <td *ngIf="tema.moderado == true || validacionOcultar == false" ><strong>{{ tema.titulo }}</strong></td>
           <td *ngIf="tema.moderado == true || validacionOcultar == false">{{ tema.contenido }}</td>
           <td *ngIf="tema.moderado == true || validacionOcultar == false">{{ tema.fechaPublicacion }}</td>
           <td *ngIf="tema.moderado == true || validacionOcultar == false">{{ tema.rating }}</td>
-          <td *ngIf="tema.moderado == true || validacionOcultar == false"><a [routerLink]="['/temas', idForo,'comentarios',tema.id]">Ver Comentarios</a></td>
-          <td *ngIf="(tema.moderado == true || validacionOcultar == false) && (tema.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador')"><a [routerLink]="['/temas', idForo,'edit',tema.id]">Editar Tema</a></td>
-          <td *ngIf="(tema.moderado == true || validacionOcultar == false) && (tema.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador')" (click)="eliminar(tema.id)">Eliminar Tema</td>
-          <td *ngIf="tema.moderado == true || validacionOcultar == false" (click)="masRating(tema.id)">Subir rating</td>
-          <td *ngIf="tema.moderado == true || validacionOcultar == false" (click)="menosRating(tema.id)">Bajar rating</td>
-          <td *ngIf="validacionOcultar == false && tema.moderado == false" (click)="aceptarModerado(tema.id)">Aceptar tema</td>
-          <td *ngIf="validacionOcultar == false && tema.moderado == false" (click)="eliminar(tema.id)">Denegar tema</td>
+          <td *ngIf="tema.moderado == true || validacionOcultar == false"><button type="button" class="btn btn-dark" [routerLink]="['/temas', idForo,'comentarios',tema.id]">Comentarios</button></td>
+          <td *ngIf="tema.moderado == true || validacionOcultar == false" (click)="masRating(tema.id) "><img src="assets/like.png"></td>
+          <td *ngIf="tema.moderado == true || validacionOcultar == false" (click)="menosRating(tema.id)"><img src="assets/dislike.png"></td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary" *ngIf="(tema.moderado == true || validacionOcultar == false) && (tema.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador')" [routerLink]="['/temas', idForo,'edit',tema.id]">Editar</button>
+            <button type="button" class="btn btn-primary" *ngIf="(tema.moderado == true || validacionOcultar == false) && (tema.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador')" (click)="eliminar(tema.id)">Eliminar</button>
+            <button type="button" class="btn btn-success" *ngIf="validacionOcultar == false && tema.moderado == false" (click)="aceptarModerado(tema.id)">Aceptar tema</button>
+            <button type="button" class="btn btn-danger" *ngIf="validacionOcultar == false && tema.moderado == false" (click)="eliminar(tema.id)">Denegar tema</button>
+          </div>
         </tr>
       </tbody>
     </table>
+    <div class="creacion"><button type="button" class="btn btn-secondary" [routerLink]="['/temas/',idForo,'create']">Crear tema</button></div>
+    <button type="button" class="btn btn-info" [routerLink]="['/foros']">Volver a foros</button>
   </div>

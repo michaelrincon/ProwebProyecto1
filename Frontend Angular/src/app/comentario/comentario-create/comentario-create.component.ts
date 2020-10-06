@@ -90,9 +90,8 @@ export class ComentarioCreateComponent implements OnInit {
     
   }
 
-
   cancel() {
-    this.router.navigate(['/temas']);
+    this.router.navigate(['/temas',this.idForo,'comentarios',this.idTema]);
   }
 
   get canSubmit() {

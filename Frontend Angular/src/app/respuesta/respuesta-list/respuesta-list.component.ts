@@ -6,6 +6,7 @@ import { Comentario } from '../../../entities/comentario';
 import { ComentarioServiceService } from '../../../services/comentario-service.service';
 import { Respuesta } from '../../../entities/respuesta';
 import { RespuestaServiceService } from '../../../services/respuesta-service.service';
+import { LoginServicesService } from 'src/services/login-services.service';
 
 @Component({
   selector: 'app-respuesta-list',
@@ -30,7 +31,7 @@ export class RespuestaListComponent implements OnInit {
   usuario: boolean;
 
 
-  constructor(private route: ActivatedRoute, private router: Router, private comentarioService: ComentarioServiceService, private respuestaService: RespuestaServiceService) { }
+  constructor(private loginService: LoginServicesService, private route: ActivatedRoute, private router: Router, private comentarioService: ComentarioServiceService, private respuestaService: RespuestaServiceService) { }
 
   ngOnInit(): void {
     
@@ -85,7 +86,7 @@ export class RespuestaListComponent implements OnInit {
 
   organizarLista(respuesta: Respuesta[]){
     respuesta.sort(function (a, b){
-      return (a.rating - b.rating)
+      return (b.rating - a.rating)
   });
   }
 
@@ -107,5 +108,14 @@ export class RespuestaListComponent implements OnInit {
         window.location.reload();
       }
     );
+  }
+
+  logout() {
+    this.loginService.logout().subscribe(data => {
+      this.router.navigate(['/']);
+      sessionStorage.clear();
+      }, error => {
+        console.error(error);
+      });
   }
 }

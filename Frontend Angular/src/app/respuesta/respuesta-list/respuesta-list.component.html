@@ -1,26 +1,36 @@
 <div>
-    <a [routerLink]="['/temas/',idForo,'comentarios',idTema,'respuestas',idComentario,'create']">Crear respuesta</a>
-    <table class="table table-light">
-      <thead class="thead-light">
+  <button style="float: right;" type="button" class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
+  <p class="h1">Respuestas</p>
+  <p class="h2">Lista Respuestas</p>
+    <table class="table">
+      <thead class="thead-dark">
         <tr>
-          <th>Id</th>
-          <th>Contenido</th>
-          <th>Fecha</th>
-          <th>Rating</th>
+          <th scope="col">Contenido</th>
+          <th scope="col">Fecha Publicación</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Me gusta</th>
+          <th scope="col">No me gusta</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let respuesta of respuestas">
-          <td>{{ respuesta.id}}</td>
-          <td>{{ respuesta.contenido }}</td>
+          <td >{{ respuesta.contenido }}</td>
           <td>{{ respuesta.fecha }}</td>
           <td>{{ respuesta.rating }}</td>
-          <td *ngIf="respuesta.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador'"><a [routerLink]="['/temas', idForo,'comentarios',idTema,'respuestas',idComentario, 'edit', respuesta.id]">Editar Respuesta</a></td>
-          <td *ngIf="respuesta.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador'"(click)='eliminar(respuesta.id)'>Eliminar Respuesta</td>
-          <td (click)='masRating(respuesta.id)'>Subir rating</td>
-          <td (click)='menosRating(respuesta.id)'>Bajar rating</td>
+          <td (click)='masRating(respuesta.id)'><img src="assets/like.png"></td>
+          <td (click)='menosRating(respuesta.id)'><img src="assets/dislike.png"></td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary" *ngIf="respuesta.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador'" [routerLink]="['/temas', idForo,'comentarios',idTema,'respuestas',idComentario, 'edit', respuesta.id]">Editar</button>
+            <button type="button" class="btn btn-primary" *ngIf="respuesta.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador'"(click)='eliminar(respuesta.id)'>Eliminar</button>
+          </div>
+          
+
         </tr>
       </tbody>
     </table>
+    <div class="creacion"><button type="button" class="btn btn-success" [routerLink]="['/temas/',idForo,'comentarios',idTema,'respuestas',idComentario,'create']">Crear respuesta</button></div>
+    <button type="button" class="btn btn-info" [routerLink]="['/temas',idForo,'comentarios',idTema]">Volver a comentarios</button>
+    <button type="button" class="btn btn-info" [routerLink]="['/temas',idForo]">Volver a temas</button>
+    <button type="button" class="btn btn-info" [routerLink]="['/foros']">Volver a foros</button>
   </div>
 

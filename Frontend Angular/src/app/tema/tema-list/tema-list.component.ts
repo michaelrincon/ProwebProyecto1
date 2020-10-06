@@ -3,6 +3,7 @@ import { TemaServiceService } from '../../../services/tema-service.service';
 import { Tema } from '../../../entities/tema';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ForoServiceService } from '../../../services/foro-service.service';
+import { LoginServicesService } from '../../../services/login-services.service';
 
 @Component({
   selector: 'app-tema-list',
@@ -23,7 +24,7 @@ export class TemaListComponent implements OnInit {
  usuario: boolean;
 
   constructor(private route: ActivatedRoute, private router: Router, private temaService: TemaServiceService,
-    private foroService: ForoServiceService) { }
+    private foroService: ForoServiceService, private loginService: LoginServicesService) { }
 
   ngOnInit(): void {
 
@@ -71,8 +72,6 @@ export class TemaListComponent implements OnInit {
   }
   
   menosRating(idTema: number){
-    console.log(idTema+"id a buscar en menos");
-
     this.temaService.findById(idTema).subscribe(
       results => {
         console.log(results);
@@ -124,5 +123,15 @@ export class TemaListComponent implements OnInit {
       },
       error => console.error(error)
     );
+  }
+  
+
+  logout() {
+    this.loginService.logout().subscribe(data => {
+      this.router.navigate(['/']);
+      sessionStorage.clear();
+      }, error => {
+        console.error(error);
+      });
   }
 }

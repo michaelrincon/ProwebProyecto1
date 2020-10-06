@@ -80,7 +80,7 @@ export class RespuestaCreateComponent implements OnInit {
 
 
   cancel() {
-    this.router.navigate(['/temas']);
+    this.router.navigate(['/temas',this.idForo,'comentarios',this.idTema,'respuestas',this.idComentario]);
   }
 
   get canSubmit() {

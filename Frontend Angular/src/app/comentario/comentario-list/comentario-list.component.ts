@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ForoServiceService } from '../../../services/foro-service.service';
 import { Comentario } from '../../../entities/comentario';
 import { ComentarioServiceService } from '../../../services/comentario-service.service';
+import { LoginServicesService } from 'src/services/login-services.service';
 
 @Component({
   selector: 'app-comentario-list',
@@ -28,7 +29,7 @@ export class ComentarioListComponent implements OnInit {
   usuario: boolean;
 
 
-  constructor(private route: ActivatedRoute, private router: Router, private temaService: TemaServiceService, private comentarioServices: ComentarioServiceService) { }
+  constructor(private loginService: LoginServicesService, private route: ActivatedRoute, private router: Router, private temaService: TemaServiceService, private comentarioServices: ComentarioServiceService) { }
 
   ngOnInit(): void {
     
@@ -126,6 +127,15 @@ export class ComentarioListComponent implements OnInit {
       },
       error => console.error(error)
     );
+  }
+
+  logout() {
+    this.loginService.logout().subscribe(data => {
+      this.router.navigate(['/']);
+      sessionStorage.clear();
+      }, error => {
+        console.error(error);
+      });
   }
 
 }

@@ -2,3 +2,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.h1{    display: flex;
+    color: rgb(66, 65, 65);
+    justify-content: center;}
+
+.h2{
+    color: rgb(66, 65, 65);
+}
+
+.creacion{
+    display:flex;
+    justify-content: center;
+}

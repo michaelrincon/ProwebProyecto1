@@ -65,7 +65,7 @@ export class TemaViewComponent implements OnInit {
 
 
   cancel() {
-    this.router.navigate(['/temas']);
+    this.router.navigate(['/temas',this.idForo]);
   }
 
   get canSubmit() {

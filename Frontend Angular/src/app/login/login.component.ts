@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoginServicesService } from '../../services/login-services.service';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   user = '';
   password = '';
+  error: boolean;
 
 
   ngOnInit(): void {
@@ -25,9 +27,11 @@ export class LoginComponent implements OnInit {
     console.log(this.user + ' - ' + this.password);
     this.loginService.login(this.user, this.password).subscribe(data => {
       sessionStorage.setItem('usuario', this.user);
+      this.error = false;
       this.router.navigate(['foros']);
       }, error => {
         console.error(error);
+        this.error = true;
       });
   }
 

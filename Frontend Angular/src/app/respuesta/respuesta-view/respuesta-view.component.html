@@ -1,7 +1,8 @@
 <div class="container">
+  <p class="h1">Editar Respuesta</p>
     <form (ngSubmit)="editarRespuesta()" #createForm="ngForm">
       <div class="form-group">
-        <label for="name">Contenido</label>
+        <label for="contenido">Contenido</label>
         <input
           id="contenido"
           class="form-control"
@@ -15,15 +16,15 @@
           [hidden]="txtName.valid || !txtName.touched"
           class="alert alert-danger"
         >
-          Name is required
+          Contenido es requerido
         </div>
       </div>
 
   
-      <button type="submit" [disabled]="!canSubmit">
+      <button type="submit" class="btn btn-success" [disabled]="!canSubmit">
         Editar Respuesta
       </button>
-      <button (click)="cancel()">Cancelar</button>
+      <button type="button" class="btn btn-warning" (click)="cancel()">Cancelar</button>
     </form>
   
     <div *ngIf="errorMessage" class="alert alert-danger">

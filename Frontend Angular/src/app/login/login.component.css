@@ -18,16 +18,10 @@
   mat-card-title,
   mat-card-content {
     display: flex;
-    color: rgb(56, 99, 79);
+    color: rgb(66, 65, 65);
     justify-content: center;
   }
 
-  .error {
-    padding: 16px;
-    width: 300px;
-    color: white;
-    background-color: red;
-  }
 
   .button {
     display: flex;

@@ -1,7 +1,8 @@
 <div class="container">
+  <p class=h1>Crear Foro</p>
     <form (ngSubmit)="create()" #createForm="ngForm">
       <div class="form-group">
-        <label for="name">Nombre</label>
+        <label for="name">Nombre Foro</label>
         <input
           id="name"
           class="form-control"
@@ -15,30 +16,33 @@
           [hidden]="txtName.valid || !txtName.touched"
           class="alert alert-danger"
         >
-          Name is required
+          Nombre Foro es requerido
         </div>
-
-      <label for="foro">Foro moderado</label>
-      <input
+      </div>
+      <div class="form-group form-check">
+        <input class="form-check-input"
         id="foro"
         type="checkbox"
         name="foro"
         [(ngModel)]="foro.moderado"
         #txtName="ngModel"
       />
-    </div>
+        <label for="foro">Foro moderado</label>
+      </div>
+      
+    
   
      
   
-      <button type="submit" [disabled]="!canSubmit">
-        Crear foro
+      <button type="submit" class="btn btn-success" [disabled]="!canSubmit">
+        Guardar
       </button>
-      <button (click)="cancel()">Cancelar</button>
+      <button type="button" class="btn btn-warning" (click)="cancel()">Cancelar</button>
     </form>
   
     <div *ngIf="errorMessage" class="alert alert-danger">
       {{ errorMessage }}
     </div>
   </div>
-  <button (click)="logout()">logout</button>
+ 
   

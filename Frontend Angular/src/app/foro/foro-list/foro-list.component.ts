@@ -12,13 +12,14 @@ import { LoginServicesService } from '../../../services/login-services.service';
 export class ForoListComponent implements OnInit {
 
   foro: Foro[] = [];
+  usuario: string;
 
   constructor(private route: ActivatedRoute, private router: Router, 
     private foroService: ForoServiceService, private loginService: LoginServicesService) { }
 
   ngOnInit(): void {
 
-    console.log(sessionStorage.getItem('usuario')+ "usuariooo");
+    this.usuario = sessionStorage.getItem('usuario');
     this.findForos();
   }
 

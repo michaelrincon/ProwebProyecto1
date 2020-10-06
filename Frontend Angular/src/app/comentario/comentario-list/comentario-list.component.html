@@ -1,30 +1,39 @@
 <div>
-    <a [routerLink]="['/temas/',idForo,'comentarios',idTema,'create']">Crear comentario</a>
-    <table class="table table-light">
-      <thead class="thead-light">
+  <button style="float: right;" type="button" class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
+  <p class="h1">Comentarios</p>
+  <p class="h2">Lista Comentarios</p>
+    <table class="table">
+      <thead class="thead-dark">
         <tr>
-          <th>Id</th>
-          <th>Contenido</th>
-          <th>Fecha</th>
-          <th>Rating</th>
-          <th>Respuestas</th>
+          <th scope="col">Contenido</th>
+          <th scope="col">Fecha Publicación</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Respuestas</th>
+          <th scope="col">Me gusta</th>
+          <th scope="col">No me gusta</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let comentario of comentarios">
-          <td *ngIf="comentario.moderado == true || validacionOcultar == false">{{ comentario.id}}</td>
           <td *ngIf="comentario.moderado == true || validacionOcultar == false">{{ comentario.contenido }}</td>
           <td *ngIf="comentario.moderado == true || validacionOcultar == false">{{ comentario.fecha }}</td>
           <td *ngIf="comentario.moderado == true || validacionOcultar == false">{{ comentario.rating }}</td>
-          <td *ngIf="comentario.moderado == true || validacionOcultar == false"><a [routerLink]="['/temas', idForo,'comentarios',idTema,'respuestas',comentario.id]">Ver respuestas</a></td>
-          <td *ngIf="(comentario.moderado == true || validacionOcultar == false) && (comentario.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador')"><a [routerLink]="['/temas', idForo,'comentarios',idTema,'edit',comentario.id]">Editar Comentario</a></td>
-          <td *ngIf="(comentario.moderado == true || validacionOcultar == false) && (comentario.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador')" (click)="eliminar(comentario.id)">Eliminar</td>
-          <td *ngIf="comentario.moderado == true || validacionOcultar == false" (click)='masRating(comentario.id)'>Subir rating</td>
-          <td *ngIf="comentario.moderado == true || validacionOcultar == false" (click)='menosRating(comentario.id)'>Bajar rating</td>
-          <td *ngIf="validacionOcultar == false && comentario.moderado == false" (click)="aceptarModerado(comentario.id)">Aceptar tema</td>
-          <td *ngIf="validacionOcultar == false && comentario.moderado == false" (click)="eliminar(comentario.id)">Denegar tema</td>
+          <td *ngIf="comentario.moderado == true || validacionOcultar == false"><button class="btn btn-dark" [routerLink]="['/temas', idForo,'comentarios',idTema,'respuestas',comentario.id]">Respuestas</button></td>
+          <td *ngIf="comentario.moderado == true || validacionOcultar == false" (click)='masRating(comentario.id)'><img src="assets/like.png"></td>
+          <td *ngIf="comentario.moderado == true || validacionOcultar == false" (click)='menosRating(comentario.id)'><img src="assets/dislike.png"></td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary" *ngIf="(comentario.moderado == true || validacionOcultar == false) && (comentario.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador')" [routerLink]="['/temas', idForo,'comentarios',idTema,'edit',comentario.id]">Editar</button>
+            <button type="button" class="btn btn-primary" *ngIf="(comentario.moderado == true || validacionOcultar == false) && (comentario.tipoUsuario == tipoUsuario || tipoUsuario == 'administrador')" (click)="eliminar(comentario.id)">Eliminar</button>
+            <button type="button" class="btn btn-success" *ngIf="validacionOcultar == false && comentario.moderado == false" (click)="aceptarModerado(comentario.id)">Aceptar Comentario</button>
+            <button type="button" class="btn btn-danger" *ngIf="validacionOcultar == false && comentario.moderado == false" (click)="eliminar(comentario.id)">Denegar Comentario</button>
+          </div>
+          
         </tr>
       </tbody>
     </table>
+    <div class="creacion"><button type="button" class="btn btn-secondary" [routerLink]="['/temas/',idForo,'comentarios',idTema,'create']">Crear comentario</button></div>
+
+    <button type="button" class="btn btn-info" [routerLink]="['/temas',idForo]">Volver a temas</button>
+    <button type="button" class="btn btn-info" [routerLink]="['/foros']">Volver a foros</button>
   </div>
 

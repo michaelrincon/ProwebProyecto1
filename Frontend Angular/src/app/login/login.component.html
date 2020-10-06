@@ -18,6 +18,10 @@
   <div class="button">
     <button type="submit" mat-raised-button color="primary">Iniciar sesión</button>
   </div>
+  <div *ngIf="error == true" class="alert alert-danger alert-dismissible fade show" role="alert">
+    Error al iniciar sesión. 
+    Por favor digite el usuario y contraseña correctos.
+  </div>
 
 </form>
 </mat-card-content>

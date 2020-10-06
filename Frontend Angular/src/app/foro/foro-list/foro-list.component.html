@@ -1,25 +1,24 @@
-<div>
-    <a [routerLink]="['/foros/create']">Crear foro</a>
-    <table class="table table-light">
-      <thead class="thead-light">
+  <div>
+    <button style="float: right;" type="button" class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
+    <p class="h1">Foros</p>
+    <p class="h2">Lista Foros</p>
+    <table class="table table-striped">
+      <thead class="thead-dark">
         <tr>
-          <th>Id</th>
-          <th>Nombre</th>
-          <th>Moderado</th>
-          <th>Temas</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Moderado</th>
+          <th scope="col">Temas</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let foro2 of foro">
-          <td>
-            <a>{{foro2.id}}</a>
-          </td>
-          <td>{{ foro2.nombre }}</td>
-          <td>{{ foro2.moderado }}</td>
-          <td><a [routerLink]="['/temas', foro2.id]">Ver Temas</a></td>
+          <td><strong>{{ foro2.nombre }}</strong></td>
+          <td *ngIf="foro2.moderado == true"><strong>Si</strong></td><td *ngIf="foro2.moderado == false"><strong>No</strong></td>
+          <td><button type="button" class="btn btn-dark" [routerLink]="['/temas', foro2.id]">Ver Temas</button></td>
         </tr>
       </tbody>
     </table>
+    <div class="creacion"><button  type="button" class="btn btn-secondary" *ngIf="usuario == 'administrador'" [routerLink]="['/foros/create']">Crear foro</button></div>
   </div>
-  <button (click)="logout()">logout</button>
+  
   
